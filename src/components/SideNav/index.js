@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { AutoColumn } from '../Column'
 import Title from '../Title'
@@ -10,6 +10,7 @@ import { TrendingUp, List, PieChart, Disc } from 'react-feather'
 import Link from '../Link'
 import { useSessionStart } from '../../contexts/Application'
 import Burger from '../Burger'
+import { useOnClickOutside, useOutsideClick } from '../../hooks'
 
 const Wrapper = styled.div`
   height: ${({ isMobile }) => (isMobile ? 'initial' : '100vh')};
@@ -40,7 +41,13 @@ const Option = styled.div`
   color: ${({ theme }) => theme.white};
   display: flex;
   padding: 18px 0 18px 40px;
+  background: ${({ activeText }) => (activeText ? 'rgba(103, 191, 164, 0.4)' : 'transparent')};
+
   :hover {
+    background: rgba(103, 191, 164, 0.4);
+  }
+
+  :active {
     background: rgba(103, 191, 164, 0.4);
   }
 
@@ -54,6 +61,7 @@ const DesktopWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+  background: ${({ theme }) => theme.bg7};
 `
 
 const MobileWrapper = styled.div`
@@ -61,16 +69,19 @@ const MobileWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   background: ${({ theme }) => theme.bg7};
+  margin-top: 1px;
 `
 
 const HeaderText = styled.div`
   margin-right: 0.75rem;
   font-family: Gilroy-Medium;
   display: inline-box;
-  display: -webkit-inline-box;
+  
 
   @media screen and (max-width: 1079px) {
     margin: 0;
+    display: flex;
+    justify-content: center;
   }
 
   a {
@@ -122,6 +133,14 @@ const MobileMenu = styled.div`
   transition: all 0.3s;
   transition-property: height;
   transition-duration: 2s;
+
+  .dummy {
+    width: 100%;
+
+    > a > div {
+      padding-left: 28%;
+    }
+  }
 `
 
 const MenuWrapper = styled.div`
@@ -141,12 +160,12 @@ const MenuWrapper = styled.div`
 
   .show {
     transform: translateY(0%);
-    z-index: -1;
     transition: all 0.3s;
   }
 `
 
 function SideNav({ history }) {
+  const ref = useRef()
   const below1080 = useMedia('(max-width: 1080px)')
 
   const below1180 = useMedia('(max-width: 1180px)')
@@ -154,6 +173,8 @@ function SideNav({ history }) {
   const seconds = useSessionStart()
 
   const [show, setShow] = useState(false)
+
+  useOnClickOutside(ref, () => setShow(false))
 
   return (
     <>
@@ -212,18 +233,18 @@ function SideNav({ history }) {
             </AutoColumn>
             <AutoColumn gap="20px" style={{ marginLeft: '40px', marginBottom: '110px' }}>
               <HeaderText>
-                <Link href="#" target="_blank">
-                  Docs
+                <Link href="https://t.me/tbcc_eng" target="_blank">
+                  Telegram
                 </Link>
               </HeaderText>
               <HeaderText>
-                <Link href="#" target="_blank">
-                  Discord
+                <Link href="https://tbcc.exchange/#/swap" target="_blank">
+                  TBCC Swap
                 </Link>
               </HeaderText>
               <HeaderText>
-                <Link href="#" target="_blank">
-                  Twitter
+                <Link href="https://tbccwallet.com/" target="_blank">
+                  TBCC Wallet
                 </Link>
               </HeaderText>
             </AutoColumn>
@@ -239,21 +260,25 @@ function SideNav({ history }) {
             )}
           </DesktopWrapper>
         ) : (
-          <MenuWrapper>
+          <MenuWrapper ref={ref}>
             <MobileWrapper>
               <Title />
               <Burger show={show} setShow={setShow} />
             </MobileWrapper>
             <MobileMenu className={show ? 'show' : 'hide'}>
-              <AutoColumn>
+              <div className="dummy">
                 <BasicLink to="/home">
-                  <Option activeText={history.location.pathname === '/home' ?? undefined}>
+                  <Option
+                    activeText={history.location.pathname === '/home' ?? undefined}
+                    onClick={() => setShow(false)}
+                  >
                     <TrendingUp size={20} style={{ marginRight: '21px' }} />
                     Overview
                   </Option>
                 </BasicLink>
                 <BasicLink to="/tokens">
                   <Option
+                    onClick={() => setShow(false)}
                     activeText={
                       (history.location.pathname.split('/')[1] === 'tokens' ||
                         history.location.pathname.split('/')[1] === 'token') ??
@@ -266,6 +291,7 @@ function SideNav({ history }) {
                 </BasicLink>
                 <BasicLink to="/pairs">
                   <Option
+                    onClick={() => setShow(false)}
                     activeText={
                       (history.location.pathname.split('/')[1] === 'pairs' ||
                         history.location.pathname.split('/')[1] === 'pair') ??
@@ -279,6 +305,7 @@ function SideNav({ history }) {
 
                 <BasicLink to="/accounts">
                   <Option
+                    onClick={() => setShow(false)}
                     activeText={
                       (history.location.pathname.split('/')[1] === 'accounts' ||
                         history.location.pathname.split('/')[1] === 'account') ??
@@ -289,21 +316,21 @@ function SideNav({ history }) {
                     Accounts
                   </Option>
                 </BasicLink>
-              </AutoColumn>
-              <AutoColumn gap="12px" style={{ marginTop: '90px' }}>
+              </div>
+              <AutoColumn gap="12px" style={{ marginTop: 90 }}>
                 <HeaderText>
-                  <Link href="#" target="_blank">
-                    Docs
+                  <Link href="https://t.me/tbcc_eng" target="_blank">
+                    Telegram
                   </Link>
                 </HeaderText>
                 <HeaderText>
-                  <Link href="#" target="_blank">
-                    Discord
+                  <Link href="https://tbcc.exchange/#/swap" target="_blank">
+                    TBCC Swap
                   </Link>
                 </HeaderText>
                 <HeaderText>
-                  <Link href="#" target="_blank">
-                    Twitter
+                  <Link href="https://tbccwallet.com/" target="_blank">
+                    TBCC Wallet
                   </Link>
                 </HeaderText>
               </AutoColumn>

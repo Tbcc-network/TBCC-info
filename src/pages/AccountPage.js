@@ -157,10 +157,9 @@ function AccountPage({ account }) {
       <ContentWrapper>
         <RowBetween>
           <TYPE.body>
-            <BasicLink to="/accounts">{'Accounts '}</BasicLink>→{' '}
+            <BasicLink to="/accounts">{'Accounts '}</BasicLink>→
             <Link lineHeight={'145.23%'} href={'https://etherscan.io/address/' + account} target="_blank">
-              {' '}
-              {account?.slice(0, 42)}{' '}
+              {account?.slice(0, 42)}
             </Link>
           </TYPE.body>
           {!below600 && <Search small={true} />}
@@ -317,14 +316,14 @@ function AccountPage({ account }) {
               <AutoColumn gap="8px" justify="flex-start">
                 <TYPE.main style={{ marginBottom: '16px' }}>No Staked Liquidity.</TYPE.main>
                 <AutoRow gap="8px" justify="flex-start">
-                  <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>Learn More</ButtonLight>{' '}
-                </AutoRow>{' '}
+                  <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>Learn More</ButtonLight>
+                </AutoRow>
               </AutoColumn>
             )}
           </Panel>
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Transactions
-          </TYPE.main>{' '}
+          </TYPE.main>
           <Panel
             style={{
               marginTop: '1.5rem',
@@ -334,7 +333,7 @@ function AccountPage({ account }) {
           </Panel>
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Wallet Stats
-          </TYPE.main>{' '}
+          </TYPE.main>
           <Panel
             style={{
               marginTop: '1.5rem',
