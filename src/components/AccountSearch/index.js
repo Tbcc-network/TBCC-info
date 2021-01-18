@@ -106,11 +106,11 @@ function AccountSearch({ history, small }) {
 
       <AutoColumn gap={'12px'}>
         {!small && (
-          <Panel style={{ padding: '20px 30px' }}>
-            <DashGrid center={true} style={{ height: 'fit-content', padding: '0 0 20px 0' }}>
-              <TYPE.main area="account" style={{ fontFamily: 'Gilroy-Medium' }}>
-                Saved Accounts
-              </TYPE.main>
+
+          <Panel>
+            <DashGrid center={true} style={{ height: 'fit-content', padding: '0 0 1rem 16px' }}>
+              <TYPE.main area="account">Saved Accounts</TYPE.main>
+
             </DashGrid>
             <Divider />
             {savedAccounts?.length > 0 ? (
@@ -133,7 +133,9 @@ function AccountSearch({ history, small }) {
                 )
               })
             ) : (
-              <TYPE.light style={{ marginTop: '20px' }}>No saved accounts</TYPE.light>
+
+              <TYPE.light style={{ marginTop: '1rem', paddingLeft: '16px' }}>No saved accounts</TYPE.light>
+
             )}
           </Panel>
         )}
