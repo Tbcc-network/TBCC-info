@@ -251,7 +251,7 @@ function AccountPage({ account }) {
           )}
           {!hideLPContent && (
             <Panel style={{ height: '100%', marginBottom: '1rem' }}>
-              <AutoRow gap="20px" style={{ padding: '0 20px ', margin: '0' }}>
+              <AutoRow gap="20px" style={{ padding: '0 20px ', margin: '0px' }}>
                 <AutoColumn gap="10px">
                   <RowBetween>
                     <TYPE.body>Liquidity (Including Fees)</TYPE.body>
