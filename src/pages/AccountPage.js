@@ -340,7 +340,7 @@ function AccountPage({ account }) {
               marginTop: '1.5rem',
             }}
           >
-            <AutoRow gap="20px" style={{ margin: '0px', padding: '0 20px' }}>
+            <AutoRow gap="20px" style={{ margin: '0px', padding: '0px 20px' }}>
               <AutoColumn gap="8px" style={{ paddingRight: '32px' }}>
                 <TYPE.header fontSize={24}>{totalSwappedUSD ? formattedNum(totalSwappedUSD, true) : '-'}</TYPE.header>
                 <TYPE.main>Total Value Swapped</TYPE.main>
