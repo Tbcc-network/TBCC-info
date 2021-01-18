@@ -43,7 +43,7 @@ const DashGrid = styled.div`
   grid-gap: 1em;
   grid-template-columns: 10px 1.5fr 1fr 1fr;
   grid-template-areas: 'number name pair value';
-  padding: 0 4px;
+  padding: 0 30px;
 
   > * {
     justify-content: flex-end;
@@ -145,7 +145,11 @@ function LPList({ lps, disbaleLinks, maxItems = 10 }) {
 
   return (
     <ListWrapper>
-      <DashGrid center={true} disbaleLinks={disbaleLinks} style={{ height: 'fit-content', padding: ' 0 0 1rem 0' }}>
+      <DashGrid
+        center={true}
+        disbaleLinks={disbaleLinks}
+        style={{ height: 'fit-content', padding: ' 0 30px 1rem 30px' }}
+      >
         {!below600 && (
           <Flex alignItems="center" justifyContent="flex-start">
             <TYPE.main area="number">#</TYPE.main>

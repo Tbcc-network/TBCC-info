@@ -318,6 +318,7 @@ const getTopTokens = async (ethPrice, ethPriceOld) => {
 }
 
 const getTokenData = async (address, ethPrice, ethPriceOld) => {
+  console.log(ethPrice, 'price')
   const utcCurrentTime = dayjs()
   const utcOneDayBack = utcCurrentTime.subtract(1, 'day').startOf('minute').unix()
   const utcTwoDaysBack = utcCurrentTime.subtract(2, 'day').startOf('minute').unix()
@@ -336,7 +337,7 @@ const getTokenData = async (address, ethPrice, ethPriceOld) => {
       fetchPolicy: 'cache-first',
     })
     data = result?.data?.tokens?.[0]
-
+    console.log(data, 'data')
     // get results from 24 hours in past
     let oneDayResult = await client.query({
       query: TOKEN_DATA(address, oneDayBlock),
@@ -392,6 +393,7 @@ const getTokenData = async (address, ethPrice, ethPriceOld) => {
       data?.derivedETH * ethPrice,
       parseFloat(oneDayData?.derivedETH ?? 0) * ethPriceOld
     )
+    console.log(ethPrice, data?.totalLiquidity, 'ethPrice')
 
     const currentLiquidityUSD = data?.totalLiquidity * ethPrice * data?.derivedETH
     const oldLiquidityUSD = oneDayData?.totalLiquidity * ethPriceOld * oneDayData?.derivedETH

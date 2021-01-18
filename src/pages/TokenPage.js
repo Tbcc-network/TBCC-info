@@ -117,6 +117,8 @@ function TokenPage({ address, history }) {
   // pairs to show in pair list
   const fetchedPairsList = useDataForList(allPairs)
 
+  console.log(fetchedPairsList, 'fetchedPairsList')
+
   // all transactions with this token
   const transactions = useTokenTransactions(address)
 
@@ -263,7 +265,6 @@ function TokenPage({ address, history }) {
                         <div />
                       </RowBetween>
                       <RowBetween align="flex-end">
-                        {' '}
                         <TYPE.main fontSize={'1.5rem'} lineHeight={1} fontWeight={500}>
                           {price}
                         </TYPE.main>
@@ -272,7 +273,7 @@ function TokenPage({ address, history }) {
                     </AutoColumn>
                   </Panel>
                 )}
-                <Panel>
+                <Panel style={{ padding: '20px 20px 20px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Total Liquidity</TYPE.main>
@@ -286,7 +287,7 @@ function TokenPage({ address, history }) {
                     </RowBetween>
                   </AutoColumn>
                 </Panel>
-                <Panel>
+                <Panel style={{ padding: '20px 20px 20px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Volume (24hrs) {usingUtVolume && '(Untracked)'}</TYPE.main>
@@ -301,7 +302,7 @@ function TokenPage({ address, history }) {
                   </AutoColumn>
                 </Panel>
 
-                <Panel>
+                <Panel style={{ padding: '20px 20px 20px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Transactions (24hrs)</TYPE.main>
@@ -319,6 +320,7 @@ function TokenPage({ address, history }) {
                   style={{
                     gridColumn: below1080 ? '1' : '2/4',
                     gridRow: below1080 ? '' : '1/4',
+                    padding: '20px 20px 20px',
                   }}
                 >
                   <TokenChart address={address} color={backgroundColor} base={priceUSD} />

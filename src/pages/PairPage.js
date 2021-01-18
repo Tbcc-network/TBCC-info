@@ -293,7 +293,7 @@ function PairPage({ pairAddress, history }) {
                 flexWrap: 'wrap',
               }}
             >
-              <FixedPanel onClick={() => history.push(`/token/${token0?.id}`)}>
+              <FixedPanel style={{ marginRight: '16px' }} onClick={() => history.push(`/token/${token0?.id}`)}>
                 <RowFixed>
                   <TokenLogo address={token0?.id} size={'16px'} />
                   <TYPE.main fontSize={'16px'} lineHeight={1} fontWeight={500} ml={'4px'}>
@@ -321,7 +321,7 @@ function PairPage({ pairAddress, history }) {
             <>
               {!below1080 && <TYPE.main fontSize={'1.125rem'}>Pair Stats</TYPE.main>}
               <PanelWrapper style={{ marginTop: '1.5rem' }}>
-                <Panel style={{ height: '100%' }}>
+                <Panel style={{ height: '100%', padding: '20px 20px 20px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Total Liquidity {!usingTracked ? '(Untracked)' : ''}</TYPE.main>
@@ -335,7 +335,7 @@ function PairPage({ pairAddress, history }) {
                     </RowBetween>
                   </AutoColumn>
                 </Panel>
-                <Panel style={{ height: '100%' }}>
+                <Panel style={{ height: '100%', padding: '20px 20px 20px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Volume (24hrs) {usingUtVolume && '(Untracked)'}</TYPE.main>
@@ -349,7 +349,7 @@ function PairPage({ pairAddress, history }) {
                     </RowBetween>
                   </AutoColumn>
                 </Panel>
-                <Panel style={{ height: '100%' }}>
+                <Panel style={{ height: '100%', padding: '20px 20px 20px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Fees (24hrs)</TYPE.main>
@@ -364,7 +364,7 @@ function PairPage({ pairAddress, history }) {
                   </AutoColumn>
                 </Panel>
 
-                <Panel style={{ height: '100%' }}>
+                <Panel style={{ height: '100%', padding: '20px 20px 20px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Pooled Tokens</TYPE.main>
@@ -372,7 +372,7 @@ function PairPage({ pairAddress, history }) {
                     </RowBetween>
                     <Hover onClick={() => history.push(`/token/${token0?.id}`)} fade={true}>
                       <AutoRow gap="4px">
-                        <TokenLogo address={token0?.id} />
+                        <TokenLogo address={token0?.id} style={{ marginRight: '8px' }} />
                         <TYPE.main fontSize={20} lineHeight={1} fontWeight={500}>
                           <RowFixed>
                             {reserve0 ? formattedNum(reserve0) : ''}{' '}
@@ -383,7 +383,7 @@ function PairPage({ pairAddress, history }) {
                     </Hover>
                     <Hover onClick={() => history.push(`/token/${token1?.id}`)} fade={true}>
                       <AutoRow gap="4px">
-                        <TokenLogo address={token1?.id} />
+                        <TokenLogo style={{ marginRight: '8px' }} address={token1?.id} />
                         <TYPE.main fontSize={20} lineHeight={1} fontWeight={500}>
                           <RowFixed>
                             {reserve1 ? formattedNum(reserve1) : ''}{' '}
@@ -398,6 +398,7 @@ function PairPage({ pairAddress, history }) {
                   style={{
                     gridColumn: below1080 ? '1' : '2/4',
                     gridRow: below1080 ? '' : '1/5',
+                    padding: '20px 20px 20px',
                   }}
                 >
                   <PairChart

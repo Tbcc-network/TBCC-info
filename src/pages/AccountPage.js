@@ -251,7 +251,7 @@ function AccountPage({ account }) {
           )}
           {!hideLPContent && (
             <Panel style={{ height: '100%', marginBottom: '1rem' }}>
-              <AutoRow gap="20px">
+              <AutoRow gap="20px" style={{ padding: '0 20px ', margin: '0' }}>
                 <AutoColumn gap="10px">
                   <RowBetween>
                     <TYPE.body>Liquidity (Including Fees)</TYPE.body>
@@ -267,7 +267,7 @@ function AccountPage({ account }) {
                     </TYPE.header>
                   </RowFixed>
                 </AutoColumn>
-                <AutoColumn gap="10px">
+                <AutoColumn style={{ marginLeft: '20px' }} gap="10px">
                   <RowBetween>
                     <TYPE.body>Fees Earned (Cumulative)</TYPE.body>
                     <div />
@@ -283,7 +283,7 @@ function AccountPage({ account }) {
           )}
           {!hideLPContent && (
             <PanelWrapper>
-              <Panel style={{ gridColumn: '1' }}>
+              <Panel style={{ gridColumn: '1', padding: '20px 20px 30px' }}>
                 {activePosition ? (
                   <PairReturnsChart account={account} position={activePosition} />
                 ) : (
@@ -294,10 +294,11 @@ function AccountPage({ account }) {
           )}
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Positions
-          </TYPE.main>{' '}
+          </TYPE.main>
           <Panel
             style={{
               marginTop: '1.5rem',
+              padding: '20px 20px 30px',
             }}
           >
             <PositionList positions={positions} />
@@ -308,12 +309,13 @@ function AccountPage({ account }) {
           <Panel
             style={{
               marginTop: '1.5rem',
+              padding: '20px 20px 30px',
             }}
           >
             {miningPositions && <MiningPositionList miningPositions={miningPositions} />}
             {!miningPositions && (
               <AutoColumn gap="8px" justify="flex-start">
-                <TYPE.main>No Staked Liquidity.</TYPE.main>
+                <TYPE.main style={{ marginBottom: '16px' }}>No Staked Liquidity.</TYPE.main>
                 <AutoRow gap="8px" justify="flex-start">
                   <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>Learn More</ButtonLight>{' '}
                 </AutoRow>{' '}
@@ -338,12 +340,12 @@ function AccountPage({ account }) {
               marginTop: '1.5rem',
             }}
           >
-            <AutoRow gap="20px">
-              <AutoColumn gap="8px">
+            <AutoRow gap="20px" style={{ margin: '0', padding: '0 20px' }}>
+              <AutoColumn gap="8px" style={{ paddingRight: '32px' }}>
                 <TYPE.header fontSize={24}>{totalSwappedUSD ? formattedNum(totalSwappedUSD, true) : '-'}</TYPE.header>
                 <TYPE.main>Total Value Swapped</TYPE.main>
               </AutoColumn>
-              <AutoColumn gap="8px">
+              <AutoColumn gap="8px" style={{ paddingRight: '32px' }}>
                 <TYPE.header fontSize={24}>
                   {totalSwappedUSD ? formattedNum(totalSwappedUSD * 0.003, true) : '-'}
                 </TYPE.header>
