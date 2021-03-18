@@ -66,7 +66,6 @@ export const ButtonLight = styled(Base)`
   font-family: Gilroy-Bold;
   font-size: 16px;
   line-height: 16px;
-
   min-width: fit-content;
   border-radius: 10px;
   white-space: nowrap;
