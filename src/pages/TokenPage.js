@@ -15,7 +15,7 @@ import TxnList from '../components/TxnList'
 import TokenChart from '../components/TokenChart'
 import { BasicLink } from '../components/Link'
 import Search from '../components/Search'
-import { formattedNum, formattedPercent, getPoolLink, getSwapLink, localNumber } from '../utils'
+import { formattedNum, formattedPercent, getLiquidityLink, getTradeLink, localNumber } from '../utils'
 import { useTokenData, useTokenTransactions, useTokenPairs } from '../contexts/TokenData'
 import { TYPE, ThemedBackground } from '../Theme'
 import { transparentize } from 'polished'
@@ -184,7 +184,6 @@ function TokenPage({ address, history }) {
           <AutoRow align="flex-end" style={{ width: 'fit-content' }}>
             <TYPE.body>
               <BasicLink to="/tokens">{'Tokens '}</BasicLink>→ {symbol}
-              {'  '}
             </TYPE.body>
             <Link
               style={{ width: 'fit-content' }}
@@ -243,10 +242,10 @@ function TokenPage({ address, history }) {
                   ) : (
                     <></>
                   )}
-                  <Link href={getPoolLink(address)} target="_blank">
+                  <Link href={getLiquidityLink(address)} target="_blank">
                     <ButtonLight color={backgroundColor}>+ Add Liquidity</ButtonLight>
                   </Link>
-                  <Link href={getSwapLink(address)} target="_blank">
+                  <Link href={getTradeLink(address)} target="_blank">
                     <ButtonDark ml={'.5rem'} mr={below1080 && '.5rem'} color={backgroundColor}>
                       Trade
                     </ButtonDark>
