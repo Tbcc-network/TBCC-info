@@ -87,6 +87,14 @@ const Warning = styled.div`
   width: calc(100% - 2rem);
 `
 
+const BasicAddress = styled.div`
+  a {
+    @media screen and (max-width: 345px) {
+      word-wrap: break-word;
+    }
+  }
+`
+
 function AccountPage({ account }) {
   // get data for this account
   const transactions = useUserTransactions(account)
@@ -158,9 +166,11 @@ function AccountPage({ account }) {
         <RowBetween>
           <TYPE.body>
             <BasicLink to="/accounts">{'Accounts '}</BasicLink>→
-            <Link lineHeight={'145.23%'} href={'https://etherscan.io/address/' + account} target="_blank">
-              {account?.slice(0, 42)}
-            </Link>
+            <BasicAddress>
+              <Link lineHeight={'145.23%'} href={'https://etherscan.io/address/' + account} target="_blank">
+                {account?.slice(0, 42)}
+              </Link>
+            </BasicAddress>
           </TYPE.body>
           {!below600 && <Search small={true} />}
         </RowBetween>
@@ -250,7 +260,7 @@ function AccountPage({ account }) {
           )}
           {!hideLPContent && (
             <Panel style={{ height: '100%', marginBottom: '1rem' }}>
-              <AutoRow gap="20px" style={{ padding: '0 20px ', margin: '0px' }}>
+              <AutoRow gap="20px" style={{ padding: '0 20px 17px', margin: '0px' }}>
                 <AutoColumn gap="10px">
                   <RowBetween>
                     <TYPE.body>Liquidity (Including Fees)</TYPE.body>

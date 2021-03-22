@@ -9,7 +9,7 @@ import Link, { CustomLink } from '../Link'
 import { Divider } from '../../components'
 import DoubleTokenLogo from '../DoubleLogo'
 import { withRouter } from 'react-router-dom'
-import { formattedNum, getPoolLink } from '../../utils'
+import { formattedNum, getLiquidityLink } from '../../utils'
 import { AutoColumn } from '../Column'
 import { useEthPrice } from '../../contexts/GlobalData'
 import { RowFixed } from '../Row'
@@ -80,6 +80,10 @@ const DashGrid = styled.div`
   @media screen and (max-width: 500px) {
     grid-template-columns: 2.5fr 1fr;
     grid-template-areas: 'name uniswap';
+  }
+
+  @media screen and (max-width: 357px) {
+    padding: 8px 0;
   }
 `
 
@@ -175,13 +179,13 @@ function PositionList({ positions }) {
             <RowFixed gap="8px" justify="flex-start">
               <Link
                 external
-                href={getPoolLink(position.pair.token0.id, position.pair.token1.id)}
+                href={getLiquidityLink(position.pair.token0.id, position.pair.token1.id)}
                 style={{ marginRight: '.5rem' }}
               >
                 <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>Add</ButtonLight>
               </Link>
               {poolOwnership > 0 && (
-                <Link external href={getPoolLink(position.pair.token0.id, position.pair.token1.id, true)}>
+                <Link external href={getLiquidityLink(position.pair.token0.id, position.pair.token1.id, true)}>
                   <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>Remove</ButtonLight>
                 </Link>
               )}
