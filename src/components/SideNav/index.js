@@ -76,7 +76,6 @@ const HeaderText = styled.div`
   margin-right: 0.75rem;
   font-family: Gilroy-Medium;
   display: inline-box;
-  
 
   @media screen and (max-width: 1079px) {
     margin: 0;
@@ -238,7 +237,7 @@ function SideNav({ history }) {
                 </Link>
               </HeaderText>
               <HeaderText>
-                <Link href="https://tbcc.exchange/#/swap" target="_blank">
+                <Link href="https://tbccswap.com/#/swap" target="_blank">
                   TBCC Swap
                 </Link>
               </HeaderText>
@@ -324,7 +323,7 @@ function SideNav({ history }) {
                   </Link>
                 </HeaderText>
                 <HeaderText>
-                  <Link href="https://tbcc.exchange/#/swap" target="_blank">
+                  <Link href="https://tbccswap.com/#/swap" target="_blank">
                     TBCC Swap
                   </Link>
                 </HeaderText>
